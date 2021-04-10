@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from rest_framework_jwt.settings import api_settings
 from django.contrib.auth.models import User
+from .models import UnitMeasures
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -34,5 +35,12 @@ class UserSerializerWithToken(serializers.ModelSerializer):
         
         instance.save()
         return instance
+
+class MeasuresSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = UnitMeasures
+        fields = ('id', 'name', 'description', 'level')
+
 
     

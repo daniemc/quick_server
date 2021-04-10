@@ -11,8 +11,8 @@ class UnitMeasures(models.Model):
     name = models.CharField(max_length=10)
     description = models.CharField(max_length=50)
     level = models.IntegerField() 
-    created_at = models.DateTimeField(auto_now=False)   
-    updated_at = models.DateTimeField(auto_now_add=True)   
+    created_at = models.DateTimeField(auto_now_add=True)   
+    updated_at = models.DateTimeField(auto_now=True)   
 
 class Product(models.Model):
     name = models.CharField(max_length=50)
@@ -20,35 +20,35 @@ class Product(models.Model):
     purchase_qty = models.IntegerField()
     sale_unit_measure = models.ForeignKey(UnitMeasures, on_delete=models.CASCADE, related_name='sale_unit_measure')
     sale_qty = models.IntegerField(default=1)
-    created_at = models.DateTimeField(auto_now=False)
-    updated_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
 class Vendors(models.Model):
     name = models.CharField(max_length=50)
     active = models.BooleanField(default=True)
-    created_at = models.DateTimeField(auto_now=False)
-    updated_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
 class ProductCosts(models.Model):
     product_id = models.ForeignKey(Product, on_delete=models.CASCADE)
     vendor_id = models.ForeignKey(Vendors, on_delete=models.CASCADE)
     cost = models.FloatField()
     active = models.BooleanField(default=True)
-    created_at = models.DateTimeField(auto_now=False)
-    updated_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
 class Customer(models.Model):
     name = models.CharField(max_length=50)
     credit_able = models.BooleanField(default=True)
     active = models.BooleanField(default=True)
-    created_at = models.DateTimeField(auto_now=False)
-    updated_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
 class MovementTypes(models.Model):
     name = models.CharField(max_length=10)
     description = models.CharField(max_length=50)
-    created_at = models.DateTimeField(auto_now=False)
-    updated_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
 class Movements(models.Model):
     product_id = models.ForeignKey(Product, on_delete=models.CASCADE)
@@ -59,7 +59,7 @@ class Movements(models.Model):
     qty = models.FloatField()
     total_db = models.FloatField()
     total_cr = models.FloatField()
-    created_at = models.DateTimeField(auto_now=False)
-    updated_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
 
