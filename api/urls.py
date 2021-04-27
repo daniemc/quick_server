@@ -1,5 +1,6 @@
 from django.urls import path
-from .views import current_user, UserList, Measures, MeasuresModification
+from .views.user import current_user, UserList
+from .views.measures import Measures, MeasuresModification
 from rest_framework_jwt.views import obtain_jwt_token
 
 urlpatterns = [

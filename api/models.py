@@ -7,12 +7,14 @@ from django.contrib.auth.models import User
 #     created_at = models.DateTimeField(auto_now_add=True)
 #     updated_at = models.DateTimeField(auto_now=True)
 
+
 class UnitMeasures(models.Model):
     name = models.CharField(max_length=10)
     description = models.CharField(max_length=50)
     level = models.IntegerField() 
     created_at = models.DateTimeField(auto_now_add=True)   
     updated_at = models.DateTimeField(auto_now=True)   
+
 
 class Product(models.Model):
     name = models.CharField(max_length=50)
@@ -23,11 +25,13 @@ class Product(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+
 class Vendors(models.Model):
     name = models.CharField(max_length=50)
     active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
 
 class ProductCosts(models.Model):
     product_id = models.ForeignKey(Product, on_delete=models.CASCADE)
@@ -37,6 +41,7 @@ class ProductCosts(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+
 class Customer(models.Model):
     name = models.CharField(max_length=50)
     credit_able = models.BooleanField(default=True)
@@ -44,11 +49,13 @@ class Customer(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+
 class MovementTypes(models.Model):
     name = models.CharField(max_length=10)
     description = models.CharField(max_length=50)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
 
 class Movements(models.Model):
     product_id = models.ForeignKey(Product, on_delete=models.CASCADE)
