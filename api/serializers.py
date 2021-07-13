@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from rest_framework_jwt.settings import api_settings
 from django.contrib.auth.models import User
-from .models import UnitMeasures, Vendors
+from .models import UnitMeasures, Vendors, Product
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -49,4 +49,18 @@ class VendorsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Vendors
         fields = ('id', 'name', 'active')
+
+
+class ProductsSerializer(serializers.ModelSerializer):
+    # purchase_unit_measure = serializers.StringRelatedField(many=False)
+    class Meta:
+        model = Product
+        fields = (
+            'id',
+            'name',
+            'purchase_unit_measure',
+            'purchase_qty',
+            'sale_unit_measure',
+            'sale_qty',
+          )
 

@@ -2,6 +2,7 @@ from django.urls import path
 from .views.user import current_user, UserList
 from .views.measures import Measures, MeasuresModification
 from .views.vendors import Vendors, VendorsModification
+from .views.products import Products, ProductsModification
 from rest_framework_jwt.views import obtain_jwt_token
 
 urlpatterns = [
@@ -11,5 +12,6 @@ urlpatterns = [
     path('measures', Measures.as_view()),
     path('measures/<int:id>', MeasuresModification.as_view()),
     path('vendors', Vendors.as_view()),
-    path('vendors/<int:id>', VendorsModification.as_view()),
+    path('products', Products.as_view()),
+    path('products/<int:id>', ProductsModification.as_view()),
 ]
