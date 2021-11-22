@@ -52,15 +52,17 @@ class VendorsSerializer(serializers.ModelSerializer):
 
 
 class ProductsSerializer(serializers.ModelSerializer):
-    # purchase_unit_measure = serializers.StringRelatedField(many=False)
+    purchase_unit_measure = serializers.StringRelatedField(many=False)
+    sale_unit_measure = serializers.StringRelatedField(many=False)
+    
     class Meta:
         model = Product
-        fields = (
+        fields = [
             'id',
             'name',
             'purchase_unit_measure',
             'purchase_qty',
             'sale_unit_measure',
             'sale_qty',
-          )
+          ]
 

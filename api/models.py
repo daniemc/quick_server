@@ -7,14 +7,17 @@ class UnitMeasures(models.Model):
     description = models.CharField(max_length=50)
     level = models.IntegerField() 
     created_at = models.DateTimeField(auto_now_add=True)   
-    updated_at = models.DateTimeField(auto_now=True)   
+    updated_at = models.DateTimeField(auto_now=True) 
+
+    def __str__(self):
+        return '%s: %s' % (self.name, self.description)  
 
 
 class Product(models.Model):
     name = models.CharField(max_length=50)
-    purchase_unit_measure = models.ForeignKey(UnitMeasures, on_delete=models.CASCADE, related_name='purchase_unit_measure')
+    purchase_unit_measure = models.ForeignKey(UnitMeasures, on_delete=models.CASCADE, related_name='purchase_unit_measure_fk')
     purchase_qty = models.IntegerField()
-    sale_unit_measure = models.ForeignKey(UnitMeasures, on_delete=models.CASCADE, related_name='sale_unit_measure')
+    sale_unit_measure = models.ForeignKey(UnitMeasures, on_delete=models.CASCADE, related_name='sale_unit_measure_fk')
     sale_qty = models.IntegerField(default=1)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
